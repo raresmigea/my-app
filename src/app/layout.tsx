@@ -11,12 +11,61 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {/* Main Layout Section */}
+        <section style={{ display: 'flex', minHeight: '100vh' }}>
+          {/* Sidebar */}
+          <nav
+            style={{
+              width: '250px',
+              backgroundColor: '#2c3e50',
+              color: 'white',
+              padding: '20px',
+            }}
+          >
+            <h2 style={{ margin: 0, padding: '10px 0' }}>Home</h2>
+            <ul style={{ listStyleType: 'none', padding: 0 }}>
+              <li style={{ padding: '10px 0' }}>
+                <a href="/dashboard" style={{ color: 'white', textDecoration: 'none' }}>
+                  Dashboard
+                </a>
+              </li>
+              <li style={{ padding: '10px 0' }}>
+                <a href="/dashboard/profile" style={{ color: 'white', textDecoration: 'none' }}>
+                  Profile
+                </a>
+              </li>
+              <li style={{ padding: '10px 0' }}>
+                <a href="/dashboard/settings" style={{ color: 'white', textDecoration: 'none' }}>
+                  Settings
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Main Content */}
+          <main style={{ flex: 1, padding: '20px' }}>
+            {/* Header */}
+            <header
+              style={{
+                backgroundColor: '#ecf0f1',
+                padding: '10px 20px',
+                marginBottom: '20px',
+              }}
+            >
+              <h1 style={{ margin: 0 }}>Dashboard</h1>
+            </header>
+
+            {/* Page Content */}
+            <div>{children}</div>
+          </main>
+        </section>
+      </body>
     </html>
   );
 }
